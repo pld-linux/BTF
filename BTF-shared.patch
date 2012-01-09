@@ -1,0 +1,63 @@
+--- BTF/Lib/Makefile.orig	2012-01-09 19:34:18.460060583 +0100
++++ BTF/Lib/Makefile	2012-01-09 20:11:23.916801765 +0100
+@@ -15,14 +15,17 @@
+ 
+ all: library
+ 
+-library: libbtf.a
++library: libbtf.la
+ 
+ OBJ = btf_order.o btf_maxtrans.o btf_strongcomp.o \
+     btf_l_order.o btf_l_maxtrans.o btf_l_strongcomp.o
+ 
+-libbtf.a: $(OBJ)
+-	$(ARCHIVE)  libbtf.a $(OBJ)
+-	- $(RANLIB) libbtf.a
++libbtf.la: $(OBJ)
++	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) $(CFLAGS) -o libbtf.la -rpath $(libdir) $(OBJ:.o=.lo)
++
++install: libbtf.la
++	install -d $(DESTDIR)$(libdir)
++	libtool --mode=install cp libbtf.la $(DESTDIR)$(libdir)/libbtf.la
+ 
+ $(OBJ): $(INC)
+ 
+@@ -32,31 +35,31 @@
+ #-------------------------------------------------------------------------------
+ 
+ btf_order.o: ../Source/btf_order.c
+-	$(C) -c $(I) $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) $< -o $@
+ 
+ btf_maxtrans.o: ../Source/btf_maxtrans.c
+-	$(C) -c $(I) $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) $< -o $@
+ 
+ btf_strongcomp.o: ../Source/btf_strongcomp.c
+-	$(C) -c $(I) $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) $< -o $@
+ 
+ #-------------------------------------------------------------------------------
+ 
+ btf_l_order.o: ../Source/btf_order.c
+-	$(C) -c $(I) -DDLONG $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) -DDLONG $< -o $@
+ 
+ btf_l_maxtrans.o: ../Source/btf_maxtrans.c
+-	$(C) -c $(I) -DDLONG $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) -DDLONG $< -o $@
+ 
+ btf_l_strongcomp.o: ../Source/btf_strongcomp.c
+-	$(C) -c $(I) -DDLONG $< -o $@
++	libtool --tag=CC --mode=compile $(C) -c $(I) -DDLONG $< -o $@
+ 
+ #-------------------------------------------------------------------------------
+ 
+ purge: distclean
+ 
+ distclean: clean
+-	- $(RM) libbtf.a 
++	- $(RM) libbtf.la 
+ 
+ clean:
+ 	- $(RM) $(CLEAN)

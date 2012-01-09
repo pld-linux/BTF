@@ -1,0 +1,31 @@
+--- BTF/Makefile.orig	2011-12-08 21:00:31.000000000 +0100
++++ BTF/Makefile	2012-01-09 19:06:48.286671996 +0100
+@@ -6,7 +6,7 @@
+ 
+ default: library
+ 
+-include ../UFconfig/UFconfig.mk
++include /usr/share/misc/UFconfig.mk
+ 
+ library:
+ 	( cd Lib ; $(MAKE) )
+--- BTF/Lib/Makefile.orig	2011-12-08 18:36:11.000000000 +0100
++++ BTF/Lib/Makefile	2012-01-09 19:34:01.893393361 +0100
+@@ -2,7 +2,7 @@
+ 
+ ccode: all
+ 
+-include ../../UFconfig/UFconfig.mk
++include /usr/share/misc/UFconfig.mk
+ 
+ # for testing only:
+ # TEST = -DTESTING
+@@ -11,7 +11,7 @@
+ 
+ INC = ../Include/btf.h ../Include/btf_internal.h
+ 
+-I = -I../Include -I../../UFconfig
++I = -I../Include
+ 
+ all: library
+ 
