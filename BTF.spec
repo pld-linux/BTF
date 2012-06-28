@@ -1,16 +1,16 @@
 Summary:	BTF: permutation to block triangular form
 Summary(pl.UTF-8):	BTF - permutacja do postaci blokowo trójkątnej
 Name:		BTF
-Version:	1.1.3
+Version:	1.2.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/btf/%{name}-%{version}.tar.gz
-# Source0-md5:	cd8f2e52a3618da471fbb60342a96915
+# Source0-md5:	00ece872530408f3f5598b0eaa83c7fc
 Patch0:		%{name}-ufconfig.patch
 Patch1:		%{name}-shared.patch
 URL:		http://www.cise.ufl.edu/research/sparse/btf/
-BuildRequires:	UFconfig >= 3.7.0
+BuildRequires:	SuiteSparse_config >= 4.0.0
 BuildRequires:	libtool >= 2:1.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -29,7 +29,7 @@ Summary:	Header files for BTF library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki BTF
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	UFconfig >= 3.7.0
+Requires:	SuiteSparse_config >= 4.0.0
 
 %description devel
 Header files for BTF library.

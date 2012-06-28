@@ -4,8 +4,8 @@
  
  default: library
  
--include ../UFconfig/UFconfig.mk
-+include /usr/share/misc/UFconfig.mk
+-include ../SuiteSparse_config/SuiteSparse_config.mk
++include /usr/share/misc/SuiteSparse_config.mk
  
  library:
  	( cd Lib ; $(MAKE) )
@@ -15,8 +15,8 @@
  
  ccode: all
  
--include ../../UFconfig/UFconfig.mk
-+include /usr/share/misc/UFconfig.mk
+-include ../../SuiteSparse_config/SuiteSparse_config.mk
++include /usr/share/misc/SuiteSparse_config.mk
  
  # for testing only:
  # TEST = -DTESTING
@@ -24,7 +24,7 @@
  
  INC = ../Include/btf.h ../Include/btf_internal.h
  
--I = -I../Include -I../../UFconfig
+-I = -I../Include -I../../SuiteSparse_config
 +I = -I../Include
  
  all: library
