@@ -2,7 +2,7 @@ Summary:	BTF: permutation to block triangular form
 Summary(pl.UTF-8):	BTF - permutacja do postaci blokowo trójkątnej
 Name:		BTF
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://www.cise.ufl.edu/research/sparse/btf/%{name}-%{version}.tar.gz
@@ -69,7 +69,7 @@ install -d $RPM_BUILD_ROOT%{_includedir}/btf
 	DESTDIR=$RPM_BUILD_ROOT \
 	libdir=%{_libdir}
 
-install Include/*.h $RPM_BUILD_ROOT%{_includedir}/btf
+cp -p Include/*.h $RPM_BUILD_ROOT%{_includedir}/btf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
